@@ -6,7 +6,6 @@ module.exports = {
       let todaysDate = new Date().toString().split(' ').slice(0, 4).join(' ')
       let todaysDateMs = new Date(todaysDate + ', 00:00:00').getTime()
 
-
       Promise.all([
          Habits.updateMany({}, {
             $set: {
@@ -45,7 +44,7 @@ module.exports = {
          })
    },
    updateHabit: (req, res) => {
-      Habits.findOneAndUpdate({ habitName: req.body.habit, streak: req.body.streak, date: { $ne: req.body['current-date'] } }, {
+      Habits.findOneAndUpdate({ _id: req.body.habitId, streak: req.body.streak, date: { $ne: req.body['current-date'] } }, {
          $set: {
             streak: req.body.streak + 1,
             clicked: req.body.clicked,
@@ -58,7 +57,7 @@ module.exports = {
          .catch(error => console.error(error))
    },
    deleteHabit: (req, res) => {
-      Habits.findOneAndDelete({ habitName: req.body.habit })
+      Habits.findOneAndDelete({ _id: req.body.habitId })
          .then(console.log('Habit deleted'),
             res.json('Habit deleted')
          )

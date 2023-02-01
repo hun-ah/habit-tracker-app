@@ -26,9 +26,13 @@ myForm.addEventListener('submit', function (pEvent) {
 });
 
 async function updateHabit() {
+   const habitId = this.parentNode.parentNode.parentNode.dataset.id
+
    const habitName = this.parentNode.parentNode.childNodes[1].childNodes[1].innerText
 
    const streak = Number(this.parentNode.parentNode.childNodes[1].childNodes[3].innerText.split(' ').slice(0, 2).pop())
+
+   console.log(habitId)
 
    this.style['pointer-events'] = 'none'
 
@@ -40,7 +44,8 @@ async function updateHabit() {
          streak: streak,
          ['current-date']: date,
          clicked: 'true',
-         lastClickedMs: new Date(date + ', 00:00:00').getTime()
+         lastClickedMs: new Date(date + ', 00:00:00').getTime(),
+         habitId: habitId
       })
    })
    const data = await res.json()
@@ -49,13 +54,13 @@ async function updateHabit() {
 }
 
 async function deleteHabit() {
-   const habitName = this.parentNode.parentNode.childNodes[1].childNodes[1].innerText
+   const habitId = this.parentNode.parentNode.parentNode.dataset.id
 
    const res = await fetch('/habits/deleteHabit', {
       method: 'delete',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-         habit: habitName
+         habitId: habitId
       })
    })
    const data = await res.json()

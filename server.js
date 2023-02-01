@@ -57,4 +57,9 @@ app.use('/habits', habitRoutes)
 app.use('/login', loginRoutes)
 app.use('/getStarted', getStartedRoutes)
 
+// Render 404 page
+app.get('*', function (req, res) {
+   res.render('404.ejs');
+});
+
 app.listen(PORT, () => console.log(`Server is running on ${PORT}`))
