@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="css/nav.css">
+   <link rel="stylesheet" href="css/footer.css">
+   <link rel="stylesheet" href="css/index.css">
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+   <title>Habit Tracker App</title>
+</head>
+<body>
+   <%- include ("./partials/nav") %>
+   <div class="content-container">
+      <div class="hero-container">
+         <div class="top-content">
+            <h1>Habit Tracker</h1>
+            <span>Stay aligned with your goals, daily!</span>
+            <a href="/getStarted"><span class="get-started-big">Get Started</span></a>
+         </div>
+         <div class="rectangle"></div>
+         <div class="bottom-content">
+            <div class="feature">
+               <%- include ("../public/assets/union.svg") %>
+               <div class="feature-text">
+                  <h3>Easily make new habits</h3>
+                  <span>Choose 1-2 to start</span>
+               </div>
+            </div>
+            <div class="feature">
+               <%- include ("../public/assets/union.svg") %>
+               <div class="feature-text">
+                  <h3>Mark them as complete</h3>
+                  <span>Get those habits done</span>
+               </div>
+            </div>
+            <div class="feature">
+               <%- include ("../public/assets/union.svg") %>
+               <div class="feature-text">
+                  <h3>Build your daily streak</h3>
+                  <span>Keep it consistent!</span>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+         <div id="who" class="who-container">
+            <div class="who-hero-container">
+               <div class="title-desc">
+                  <div class="people"><%- include ("../public/assets/people.svg") %></div>
+                  <h2>Who is it for?</h2>
+                  <p>Habit Tracker is for the individual who is ready to make healthy changes and build better habits in their day to day life.
+                  </p>
+                  <p>Having solid and healthy habits can be harder than we think and sometimes daunting to keep up with. This app aims to simplify the process and help users create a list of simple daily habits and a place to keep track of them.</p>
+               </div>
+            </div>
+         </div>
+         <div id="why" class="why-container">
+            <div class="why-hero-container">
+               <div class="title-desc-why">
+                  <h2>Why track your habits?</h2>
+                  <p>Forming new habits is a marathon, not a sprint. It takes time to see the desired results of your hard work - it doesn't happen overnight... in a week... or even in a month.
+                  </p>
+                  <p>Tracking your habits gives you immediate feedback that you are on the right path, while you wait for the rewards of all the longterm work you are putting in.</p>
+               </div>
+               <div class="stats">
+                  <div class="stats-div">
+                     <%- include ("../public/assets/icon_motivation.svg") %>
+                     <h4>Motivating</h4>
+                     <p>Getting your habits done daily builds forward momentum.</p>
+                  </div>
+                  <div class="stats-div">
+                     <%- include ("../public/assets/icon_satisfied.svg") %>
+                     <h4>Satisfying</h4>
+                     <p>Checking things off a list and seeing your streak feels good!</p>
+                  </div>
+                  <div class="stats-div">
+                     <%- include ("../public/assets/icon_empowered.svg") %>
+                     <h4>Empowering</h4>
+                     <p>Completing daily tasks brings a sense of accomplishment and productivity.</p>
+                  </div>
+                  <div class="stats-div">
+                     <%- include ("../public/assets/icon_visual.svg") %>
+                     <h4>Visual Progession</h4>
+                     <p>See your progress continue to grow over time.</p>
+                  </div>
+               </div>
+            </div>
+         </div>
+            <%- include ("./partials/footer") %>
+  <script src="/js/main.js"></script>
+</body>
+</html>

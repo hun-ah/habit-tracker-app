@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="css/nav.css">
+   <link rel="stylesheet" href="css/footer.css">
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+   <title>Get Started</title>
+</head>
+<body>
+   <%= include ("./partials/messages") %>
+   <form action="/getStarted/register" method="POST">
+      <label for="name">Name</label>
+      <input type="text" placeholder="Enter Name" name="name" value="<%= typeof name != 'undefined' ? name : '' %>">
+      <label for="email">Email</label>
+      <input type="text" placeholder="example@gmail.com" name="email" value="<%= typeof email != 'undefined' ? email : '' %>">
+      <label for="password">Password</label>
+      <input type="text" placeholder="password" name="password" value="<%= typeof password != 'undefined' ? password : '' %>">
+      <button type="submit">Register</button>
+   </form>
+   <span>Already have an account? Login <a href="/login">here</a></span>
+    <!-- <%- include ("./partials/nav") %> -->
+   <!--<%- include ("./partials/footer") %> -->
+</body>
+</html>

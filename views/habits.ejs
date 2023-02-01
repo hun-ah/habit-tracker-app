@@ -1,0 +1,80 @@
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="css/habits.css">
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+   <title>My Habits</title>
+</head>
+<body>
+   <nav>
+      <div class="nav-text">
+         <a href="/"><span>habittracker</span></a>
+         <a href="/#who"><span>Who is it for?</span></a>
+         <a href="/#why"><span>Why track your habits?</span></a>
+         <a href="/habits"><span>My Habits</span></a>
+         <a href="/login/logout"><span>Sign out</span></a>
+      </div>
+   </nav>
+   <div class="content-container">
+      <div class="left-text-container">
+         <span class="current-date">Today is: </span>
+         <div class="habits-left-container">
+            <span class="habits-left">Habits left today </span>
+            <span class="circle">
+               <%=habitsLeft%>
+            </span>
+         </div>
+      </div>
+      <div class="hero-container">
+          <div class="left-content">
+            <div class="title-desc">
+               <h1><%=name%>'s habits</h1>
+               <span>Start with 1-2 easily achievable habits <br/> and build from there!</span>
+            </div>
+            <form autocomplete="off" action="/habits/createHabit" method="post">
+               <input type="text" placeholder="Enter new habit" name="habitName">
+               <button class="btn add-habit">Add Habit</button>
+            </form>
+         </div>
+
+         <div class="habit-container">
+            <% if(habits.length > 0){ %>
+            <ul>
+               <% for(var i = 0; i < habits.length; i++) {%>
+               <li class="<%= habits[i].clicked === 'true' ? 'pointer-none && fade-li' : 'false' %>">
+                  <div class="content">
+                     <div class="content-header">
+                        <span class="habit"><%= habits[i].habitName %></span>
+                        <span class="days-style">Streak <span class="days days-style days-green"><%= habits[i].streak%>
+                         <% if(habits[i].streak == 1){ %>
+                              <span class="days-green-fix">day</span>
+                           <% } else { %>  
+                              <span class="days-green-fix">days</span>
+                           <% } %>
+                        </span></span>
+                     </div>
+                     <div class="rectangle"></div>
+                     <div class="btn-container">
+                        <button class="btn delete">Abandon Habit</button>
+                        <button class="btn update">Complete</button>
+                     </div>
+                  </div>
+               </li>
+               <% } %>
+            </ul>
+            <% } else { %>  
+               <div class="empty-state">
+               <%- include ("../public/assets/illustration.svg") %>
+               <h2>No habits to see here... yet!</h2>
+               </div>
+            <% } %>
+         </div>
+      </div>
+   </div>
+  <script src="/js/main.js"></script>
+</body>
+</html>

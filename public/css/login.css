@@ -1,0 +1,20 @@
+* {
+   box-sizing: border-box;
+   margin: 0;
+   padding: 0;
+   list-style: none;
+}
+
+html {
+   scroll-behavior: smooth;
+}
+
+a {
+   text-decoration: none;
+}
+
+:root {
+   --light-font-colour: #6B7280;
+   --btn-colour: #1C64F2;
+   font-family: 'Inter', sans-serif;
+}
