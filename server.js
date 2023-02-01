@@ -10,6 +10,7 @@ const nocache = require("nocache")
 
 // Route variables
 const habitRoutes = require('./routes/habits')
+const errorRoutes = require('./routes/errors')
 const indexRoutes = require('./routes/index')
 const loginRoutes = require('./routes/login')
 const getStartedRoutes = require('./routes/get-started')
@@ -56,10 +57,7 @@ app.use('/', indexRoutes)
 app.use('/habits', habitRoutes)
 app.use('/login', loginRoutes)
 app.use('/getStarted', getStartedRoutes)
+app.use('*', errorRoutes)
 
-// Render 404 page
-app.get('*', function (req, res) {
-   res.render('404.ejs');
-});
 
 app.listen(PORT, () => console.log(`Server is running on ${PORT}`))
