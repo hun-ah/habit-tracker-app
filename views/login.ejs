@@ -6,20 +6,30 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <link rel="stylesheet" href="css/nav.css">
    <link rel="stylesheet" href="css/footer.css">
+   <link rel="stylesheet" href="css/login.css">
    <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
    <title>Login</title>
 </head>
 <body>
-   <%= include ("./partials/messages") %>
-   <form action="/login/loginUser" method="post">
-      <label for="email">Email<input type="text" placeholder="example@gmail.com" name="email"></label>
-      <label for="password">Password<input type="text" placeholder="password" name="password"></label>
-      <button type="submit">Login</button>
-   </form>
-   <span>Don't have an account? Registere <a href="/getStarted">here</a></span>
-   <!-- <%- include ("./partials/nav") %> -->
-   <!-- <%- include ("./partials/footer") %> -->
+   <%- include ("./partials/nav") %>
+   <div class="content-container">
+      <div class="signup-container">
+         <%= include ("./partials/messages") %>
+         <h1>Log in</h1>
+         <div class="inputs">
+            <form action="/login/loginUser" method="post">
+            <label for="email">Email</label>
+            <input type="text" placeholder="example@gmail.com" name="email">
+            <label for="password">Password</label>
+            <input type="text" placeholder="password" name="password">
+            <button type="submit" class="login-btn">Login</button>
+         </form>
+         </div>
+         <span>New to Habit Tracker? Register <a href="/getStarted" class="get-started-a">here</a></span>
+      </div>
+   </div>
+   <%- include ("./partials/footer") %>
 </body>
 </html>
