@@ -17,8 +17,12 @@
     <%- include ("./partials/nav") %>
    <div class="content-container">
       <div class="register-container">
-            <%= include ("./partials/messages") %>
          <h1>Sign up</h1>
+         <% if (typeof errors != 'undefined') {%>
+            <% errors.forEach(error => { %>
+               <span class="error-msg"><%= error.msg%></span>
+             <% }) %>
+         <% } %>
          <div class="inputs">
             <form action="/getStarted" method="POST">
                <label for="name">Name</label>
@@ -34,5 +38,6 @@
       </div>
    </div>
    <%- include ("./partials/footer") %>
+  <script src="/js/toggleMenu.js"></script>
 </body>
 </html>

@@ -63,6 +63,10 @@ h1 {
    color: #111928;
 }
 
+.error-msg {
+   color: #F05252
+}
+
 .inputs {
    display: flex;
    flex-direction: column;
