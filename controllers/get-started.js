@@ -1,4 +1,5 @@
 const User = require('../models/User')
+const validator = require('validator')
 const bcrypt = require('bcrypt')
 
 module.exports = {
@@ -9,6 +10,9 @@ module.exports = {
       const { name, email, password } = req.body
 
       let errors = []
+
+      // Check for valid email address
+      if (!validator.isEmail(req.body.email)) errors.push({ msg: 'Please enter a valid email address' })
 
       // Check required fields
       if (!name || !email || !password) {
@@ -41,7 +45,7 @@ module.exports = {
                   })
                } else {
                   const newUser = new User({
-                     name,
+                     name: name.charAt(0).toUpperCase() + name.slice(1),
                      email,
                      password
                   })

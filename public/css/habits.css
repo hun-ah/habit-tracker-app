@@ -69,6 +69,14 @@ nav {
    margin-right: auto;
 }
 
+.nav-add-hover {
+   transition: ease .3s;
+}
+
+.nav-add-hover:hover {
+   color: #1A56DB;
+}
+
 .content-container {
    width: 1280px;
    min-height: 800px;

@@ -13,13 +13,21 @@
    <title>Habit Tracker App</title>
 </head>
 <body>
-   <%- include ("./partials/nav") %>
+   <% if (!user) {%>
+      <%- include ("./partials/nav") %>
+   <% } else { %>
+      <%- include ("./partials/nav-auth") %>
+   <% } %>
    <div class="content-container">
       <div class="hero-container">
          <div class="top-content">
             <h1>Habit Tracker</h1>
             <span>Stay aligned with your goals, daily!</span>
-            <a href="/getStarted"><span class="get-started-big">Get Started</span></a>
+            <% if (!user) {%>
+               <a href="/getStarted"><span class="get-started-big">Get Started</span></a>
+            <% } else { %>
+               <a href="/habits"><span class="habits-big">My Habits</span></a>
+            <% } %>
          </div>
          <div class="rectangle"></div>
          <div class="bottom-content">

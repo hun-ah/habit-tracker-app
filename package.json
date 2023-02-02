@@ -23,7 +23,8 @@
     "mongoose": "^6.9.0",
     "nocache": "^3.0.4",
     "passport": "^0.6.0",
-    "passport-local": "^1.0.0"
+    "passport-local": "^1.0.0",
+    "validator": "^13.7.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.20"

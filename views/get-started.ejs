@@ -19,7 +19,7 @@
          <%= include ("./partials/messages") %>
          <h1>Sign up</h1>
          <div class="inputs">
-            <form action="/getStarted/register" method="POST">
+            <form action="/getStarted" method="POST">
                <label for="name">Name</label>
                <input type="text" placeholder="Enter Name" name="name" value="<%= typeof name != 'undefined' ? name : '' %>">
                <label for="email">Email</label>

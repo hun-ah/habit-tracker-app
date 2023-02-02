@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const loginController = require('../controllers/login')
+const errorController = require('../controllers/errors')
 const { ensureGuest } = require('../config/auth')
 
 

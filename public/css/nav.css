@@ -68,10 +68,10 @@ nav {
    background: #31c48d;
 }
 
-.add-hover {
+.nav-add-hover {
    transition: ease .3s;
 }
 
-.add-hover:hover {
+.nav-add-hover:hover {
    color: #1A56DB;
 }

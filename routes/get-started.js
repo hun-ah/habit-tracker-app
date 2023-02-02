@@ -5,6 +5,6 @@ const { ensureGuest } = require('../config/auth')
 
 
 router.get('/', ensureGuest, getStartedController.getPage)
-router.post('/register', getStartedController.registerUser)
+router.post('/', getStartedController.registerUser)
 
 module.exports = router

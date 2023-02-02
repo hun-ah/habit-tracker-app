@@ -4,9 +4,32 @@
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Error 404</title>
+   <link rel="stylesheet" href="css/nav.css">
+   <link rel="stylesheet" href="css/footer.css">
+   <link rel="stylesheet" href="css/404.css">
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+   <title>Page not found</title>
 </head>
 <body>
-   <h1>Error 404: Page does not exist</h1>
+   <% if (!user) {%>
+      <%- include ("./partials/nav") %>
+   <% } else { %>
+      <%- include ("./partials/nav-auth") %>
+   <% } %>
+   <div class="content-container">
+      <div class="error-container">
+         <div class="title-desc">
+            <h1>Awwww sh-</h1>
+            <span>How did you find your way here?</span>
+            <a href="/">Back to safety</a>
+         </div>
+         <div class="error-img">
+            <%- include ("../public/assets/404.svg") %>
+         </div>
+      </div>
+   </div>
+   <%- include ("./partials/footer") %>
 </body>
 </html>
