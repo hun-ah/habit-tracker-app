@@ -15,17 +15,17 @@
 <body>
    <%- include ("./partials/nav") %>
    <div class="content-container">
-      <div class="signup-container">
+      <div class="login-container">
          <%= include ("./partials/messages") %>
          <h1>Log in</h1>
          <div class="inputs">
             <form action="/login/loginUser" method="post">
-            <label for="email">Email</label>
-            <input type="text" placeholder="example@gmail.com" name="email">
-            <label for="password">Password</label>
-            <input type="text" placeholder="password" name="password">
-            <button type="submit" class="login-btn">Login</button>
-         </form>
+               <label for="email">Email</label>
+               <input type="text" placeholder="example@gmail.com" name="email">
+               <label for="password">Password</label>
+               <input type="text" placeholder="password" name="password">
+               <button type="submit" class="login-btn">Login</button>
+            </form>
          </div>
          <span>New to Habit Tracker? Register <a href="/getStarted" class="get-started-a">here</a></span>
       </div>
