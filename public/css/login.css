@@ -63,6 +63,14 @@ h1 {
    color: #111928;
 }
 
+.success-msg {
+   color: #31c48d;
+}
+
+.error-msg {
+   color: #F05252
+}
+
 .inputs {
    display: flex;
    flex-direction: column;

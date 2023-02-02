@@ -17,9 +17,17 @@
    <%- include ("./partials/nav") %>
    <div class="content-container">
       <div class="login-container">
-         <%= include ("./partials/messages") %>
          <h1>Log in</h1>
+         <% if(success_msg != '') { %>
+            <span class="success-msg"><%= success_msg %></span>
+         <% } %>
+         <% if(error_msg != '') { %>
+            <span class="error-msg"><%= error_msg %></span>
+         <% } %>
          <div class="inputs">
+            <% if(error != '') { %>
+               <span class="error-msg"><%= error %></span>
+            <% } %>
             <form action="/login/loginUser" method="post">
                <label for="email">Email</label>
                <input type="text" placeholder="example@gmail.com" name="email">
