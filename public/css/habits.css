@@ -162,6 +162,7 @@ nav {
 
 input:focus {
    outline-width: 0;
+   border: 1px solid #111928;
 }
 
 input {

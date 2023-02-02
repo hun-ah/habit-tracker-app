@@ -276,7 +276,7 @@ h4 {
 
    .title-desc-why {
       text-align: center;
-      width: 100%;
+      width: 72%;
    }
 
    .stats {
@@ -304,6 +304,10 @@ h4 {
 }
 
 @media screen and (max-width: 1085px) {
+   .title-desc-why {
+      width: 80%;
+   }
+
    .content-container {
       margin: 0 24px;
    }
@@ -345,18 +349,30 @@ h4 {
       align-items: center;
    }
 
+
    .title-desc>p {
       width: 80%;
    }
 }
 
 @media screen and (max-width: 700px) {
+
+   .title-desc-why {
+      width: 100%;
+   }
+
    .stats {
       width: 100%;
       flex-direction: column;
+      justify-content: center;
+      align-items: center;
    }
 
    .stats-div {
-      width: 90%;
+      width: 60%;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding-left: 0;
    }
 }

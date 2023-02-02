@@ -14,4 +14,9 @@ footer {
 
 footer a {
    color: #6B7280;
+   transition: ease .3s;
+}
+
+footer a:hover {
+   color: #e1e1e1;
 }

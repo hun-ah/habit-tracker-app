@@ -67,3 +67,11 @@ nav {
 .nav-text a:nth-child(6):hover {
    background: #31c48d;
 }
+
+.add-hover {
+   transition: ease .3s;
+}
+
+.add-hover:hover {
+   color: #1A56DB;
+}

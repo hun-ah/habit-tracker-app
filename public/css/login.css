@@ -84,7 +84,10 @@ input {
    border: 1px solid #D1D5DB;
    border-radius: 8px;
    margin-bottom: 20px;
+}
 
+input:focus {
+   border: 1px solid #111928;
 }
 
 label {
