@@ -77,6 +77,8 @@ nav {
    color: #1A56DB;
 }
 
+
+/*************** MOBILE MENU SECTION ***************/
 .hamburger {
    display: none;
    padding: 15px 15px;
@@ -106,6 +108,92 @@ nav {
 .hamburger.is-active .hamburger-inner::before,
 .hamburger.is-active .hamburger-inner::after {
    background-color: #111928;
+}
+
+.mobile-menu {
+   position: fixed;
+   bottom: 0;
+   left: 0;
+   width: 100%;
+   height: 91.5%;
+   display: none;
+   overflow: hidden;
+   align-items: center;
+   justify-content: center;
+   background: #0E141F;
+}
+
+
+.menu-content {
+   display: flex;
+   flex-direction: column;
+   align-items: flex-start;
+   padding: 0px;
+   gap: 16px;
+   transform: scale(1);
+   opacity: 0;
+}
+
+.menu-item {
+   font-family: 'Inter';
+   font-style: normal;
+   font-weight: 700;
+   font-size: 24px;
+   line-height: 150%;
+   color: #F9FAFB;
+   text-align: center;
+   letter-spacing: -0.01em;
+}
+
+.mobile-rectangle {
+   width: 311px;
+   height: 1px;
+   background: #3A3A3A;
+}
+
+.mobile-menu.is-active {
+   display: flex;
+   z-index: 1;
+}
+
+.menu-content.is-active {
+   opacity: 1;
+}
+
+.no-scroll {
+   overflow-y: hidden;
+}
+
+.dot {
+   width: 8px;
+   height: 8px;
+   border-radius: 100%;
+   background: #F05252;
+}
+
+.menu-item-container {
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+   align-items: center;
+   gap: 16px;
+}
+
+.yellow-dot {
+   background: #FACA15;
+}
+
+.teal-dot {
+   background: #16BDCA;
+   ;
+}
+
+.blue-dot {
+   background: #1C64F2;
+}
+
+.purple-dot {
+   background: #9061F9;
 }
 
 .content-container {

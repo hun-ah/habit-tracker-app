@@ -1,3 +1,35 @@
+.dot {
+   width: 8px;
+   height: 8px;
+   border-radius: 100%;
+   background: #F05252;
+}
+
+.menu-item-container {
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+   align-items: center;
+   gap: 16px;
+}
+
+.yellow-dot {
+   background: #FACA15;
+}
+
+.teal-dot {
+   background: #16BDCA;
+   ;
+}
+
+.blue-dot {
+   background: #1C64F2;
+}
+
+.purple-dot {
+   background: #9061F9;
+}
+
 nav {
    position: fixed;
    top: 0;
@@ -82,14 +114,13 @@ nav {
    left: 0;
    width: 100%;
    height: 91.5%;
-   visibility: hidden;
+   display: none;
    overflow: hidden;
-   display: flex;
    align-items: center;
    justify-content: center;
    background: #0E141F;
-   /* transition: all 0.4s ease; */
 }
+
 
 .menu-content {
    display: flex;
@@ -98,11 +129,10 @@ nav {
    padding: 0px;
    gap: 16px;
    transform: scale(1);
-   /* transition: all 0.4s ease; */
    opacity: 0;
 }
 
-.menu-content>a {
+.menu-item {
    font-family: 'Inter';
    font-style: normal;
    font-weight: 700;
@@ -120,7 +150,7 @@ nav {
 }
 
 .mobile-menu.is-active {
-   visibility: visible;
+   display: flex;
 }
 
 .menu-content.is-active {
@@ -159,6 +189,7 @@ nav {
 }
 
 /*================= MEDIA QUERIES =================*/
+
 @media screen and (max-width: 900px) {
 
    .nav-text a:nth-child(2),
