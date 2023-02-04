@@ -23,7 +23,7 @@ module.exports = {
             },
          })
       ]).then(() => {
-         Habits.find({ userId: req.user.id })
+         Habits.find({ userId: req.user.id }).sort({ clicked: 1 })
             .then(results => {
                let filtered = results.filter(result => result.clicked === 'false')
                habitsLeft = filtered.length
@@ -53,6 +53,19 @@ module.exports = {
       })
          .then(console.log('Added Day'),
             res.json('Completed'))
+         .catch(error => console.error(error))
+   },
+   undoHabit: (req, res) => {
+      Habits.findOneAndUpdate({ _id: req.body.habitId }, {
+         $set: {
+            streak: req.body.streak - 1,
+            clicked: req.body.clicked,
+            lastClicked: req.body['current-date'],
+            lastClickedMs: req.body.lastClickedMs,
+         }
+      })
+         .then(console.log('Undo Habit'),
+            res.json('Undo Completed'))
          .catch(error => console.error(error))
    },
    deleteHabit: (req, res) => {

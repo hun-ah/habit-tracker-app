@@ -11,6 +11,8 @@ router.post('/createHabit', habitsController.createHabit)
 
 router.put('/updateHabit', habitsController.updateHabit)
 
+router.put('/undoHabit', habitsController.undoHabit)
+
 router.delete('/deleteHabit', habitsController.deleteHabit)
 
 module.exports = router
