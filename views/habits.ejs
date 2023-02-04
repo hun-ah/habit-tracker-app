@@ -17,10 +17,8 @@
       <div class="left-text-container">
          <span class="current-date">Today is: </span>
          <div class="habits-left-container">
-            <span class="habits-left">Habits left today </span>
-            <span class="circle">
-               <%=habitsLeft%>
-            </span>
+            <span class="habits-left">Habits left today <span class="circle"><%=habitsLeft%></span></span>
+            
          </div>
       </div>
       <div class="hero-container">
@@ -36,6 +34,13 @@
          </div>
 
          <div class="habit-container">
+            <% if (typeof completed != 'undefined') {%>
+               <% completed.forEach(complete => { %>
+                  <div class="completed-container">
+                     <span class="completed-msg"><%= complete.msg%></span>
+                  </div>
+               <% }) %>
+            <% } %>
             <% if(habits.length > 0){ %>
             <ul>
                <% for(var i = 0; i < habits.length; i++) {%>

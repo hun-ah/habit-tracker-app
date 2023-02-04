@@ -1,7 +1,7 @@
 const Habits = require('../models/Habits')
 
 module.exports = {
-   getPage: (req, res) => {
+   getPage: (req, res, next) => {
       let todaysDate = new Date().toString().split(' ').slice(0, 4).join(' ')
       let todaysDateMs = new Date(todaysDate + ', 00:00:00').getTime()
 
@@ -27,7 +27,13 @@ module.exports = {
             .then(results => {
                let filtered = results.filter(result => result.clicked === 'false')
                habitsLeft = filtered.length
-               res.render('habits.ejs', { habits: results, dayVar: 'days', habitsLeft, name: req.user.name })
+               let completed = []
+
+               if (habitsLeft === 0 && results.length > 0) {
+                  completed.push({ msg: 'Congratulations! You have completed all of today\'s habits!' })
+               }
+
+               res.render('habits.ejs', { habits: results, dayVar: 'days', habitsLeft, name: req.user.name, completed })
             })
       })
    },
