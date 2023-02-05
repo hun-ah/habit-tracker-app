@@ -24,6 +24,14 @@ select:focus {
    font-family: 'Inter', sans-serif;
 }
 
+.no-scroll {
+   overflow-y: hidden;
+}
+
+.fixed-position {
+   position: fixed;
+}
+
 body {
    display: flex;
    min-height: 100vh;

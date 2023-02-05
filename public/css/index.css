@@ -24,6 +24,10 @@
     overflow-y: hidden;
  }
 
+ .fixed-position {
+    position: fixed;
+ }
+
  /*************** MAIN CONTENT SECTION ***************/
  .container-size {
     width: 1310px;
