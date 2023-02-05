@@ -1,118 +1,129 @@
-* {
-   box-sizing: border-box;
-   margin: 0;
-   padding: 0;
-   list-style: none;
-}
+ /*************** GENERAL STYLES ***************/
+ * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+ }
 
-html {
-   scroll-behavior: smooth;
-}
+ html {
+    scroll-behavior: smooth;
+ }
 
-a {
-   text-decoration: none;
-}
+ a {
+    text-decoration: none;
+ }
 
-input:focus,
-select:focus {
-   outline: none;
-}
+ input:focus,
+ select:focus {
+    outline: none;
+ }
 
-:root {
-   --light-font-colour: #6B7280;
-   --btn-colour: #1C64F2;
-   font-family: 'Inter', sans-serif;
-}
+ :root {
+    --light-font-colour: #6B7280;
+    --btn-colour: #1C64F2;
+    font-family: 'Inter', sans-serif;
+ }
 
-.no-scroll {
-   overflow-y: hidden;
-}
+ .no-scroll {
+    overflow-y: hidden;
+ }
 
-.fixed-position {
-   position: fixed;
-}
+ .fixed-position {
+    position: fixed;
+ }
 
-body {
-   display: flex;
-   min-height: 100vh;
-   flex-direction: column;
-   justify-content: space-between;
-}
+ body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    justify-content: space-between;
+ }
 
-.content-container {
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   padding-top: 96px;
-   width: 1280px;
-   margin: 0 auto;
-   margin-top: 80px;
-}
+ /*************** MAIN CONTENT SECTION ***************/
+ .content-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 96px 24px;
+    width: 100%;
+    margin-top: 80px;
+ }
 
-.error-container {
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   padding: 0px;
-   gap: 64px;
-   width: 1280px;
-}
+ .error-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px;
+    gap: 64px;
+    width: 100%;
+ }
 
-.title-desc {
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   padding: 0px;
-   gap: 24px;
-}
+ .title-desc {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px;
+    gap: 24px;
+ }
 
-h1 {
-   font-family: 'Inter';
-   font-style: normal;
-   font-weight: 800;
-   font-size: 60px;
-   line-height: 60px;
-   color: #111928;
-}
+ h1 {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 60px;
+    line-height: 60px;
+    color: #111928;
+ }
 
-.title-desc>span {
-   font-family: 'Inter';
-   font-style: normal;
-   font-weight: 400;
-   font-size: 20px;
-   line-height: 150%;
-   color: #6B7280;
-}
+ .title-desc>span {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 150%;
+    color: #6B7280;
+ }
 
-.title-desc>a {
-   display: flex;
-   flex-direction: row;
-   justify-content: center;
-   align-items: center;
-   text-align: center;
-   padding: 8px 12px;
-   gap: 8px;
-   background: #1A56DB;
-   border-radius: 8px;
-   width: 120px;
-   height: 37px;
-   color: #FFF;
+ .title-desc>a {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 8px 12px;
+    gap: 8px;
+    background: #1A56DB;
+    border-radius: 8px;
+    width: 120px;
+    height: 37px;
+    color: #FFF;
 
-   font-family: 'Inter';
-   font-style: normal;
-   font-weight: 500;
-   font-size: 14px;
-   line-height: 150%;
-   transition: ease .3s;
-}
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 150%;
+    transition: ease .3s;
+ }
 
-.title-desc>a:hover {
-   background: #31c48d;
-}
+ .title-desc>a:hover {
+    background: #31c48d;
+ }
 
-/*================= MEDIA QUERIES =================*/
-@media screen and (max-width: 1350px) {
-   .content-container {
-      width: 60%;
-   }
-}
+ .error-img {
+    width: 100%;
+ }
+
+ /*================= MEDIA QUERIES =================*/
+ @media screen and (max-width: 480px) {
+    .error-container {
+       width: 100%;
+    }
+ }
+
+ @media screen and (min-width: 480px) {
+    .error-img {
+       width: 400px;
+    }
+ }
