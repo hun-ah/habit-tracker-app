@@ -48,7 +48,7 @@ nav {
    font-size: 20px;
    line-height: 24px;
    letter-spacing: -0.01em;
-   background: linear-gradient(to right, #111928 0%, #111928 41%, blue 41%);
+   background: linear-gradient(to right, #111928 0%, #111928 41%, #1C64F2 41%);
    background-clip: text;
    -webkit-background-clip: text;
    -webkit-text-fill-color: transparent;
