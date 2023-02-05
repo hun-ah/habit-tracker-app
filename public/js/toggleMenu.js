@@ -15,4 +15,5 @@ function toggleMenu() {
    mobileMenu.classList.toggle('is-active')
    menuContent.classList.toggle('is-active')
    body.classList.toggle('no-scroll')
+   body.classList.toggle('fixed-position')
 }

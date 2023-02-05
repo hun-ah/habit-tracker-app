@@ -20,6 +20,10 @@
     overflow-y: hidden;
  }
 
+ .fixed-position {
+    position: fixed;
+ }
+
  /*************** NAV SECTION ***************/
  nav {
     position: fixed;
