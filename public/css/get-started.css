@@ -77,6 +77,10 @@
     color: #F05252
  }
 
+ form {
+    width: 100%;
+ }
+
  .inputs {
     display: flex;
     flex-direction: column;
