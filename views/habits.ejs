@@ -13,16 +13,15 @@
 </head>
 <body>
    <%- include ("./partials/nav-auth") %>
-   <div class="content-container">
-      <div class="left-text-container">
-         <span class="current-date">Today is: </span>
-         <div class="habits-left-container">
-            <span class="habits-left">Habits left today <span class="circle"><%=habitsLeft%></span></span>
-            
-         </div>
-      </div>
+   <div class="content-container container-size">
       <div class="hero-container">
           <div class="left-content">
+            <div class="left-text-container">
+            <span class="current-date">Today is: </span>
+            <div class="habits-left-container">
+               <span class="habits-left">Habits left today <span class="circle"><%=habitsLeft%></span></span>
+            </div>
+         </div>
             <div class="title-desc">
                <h1><%=name%>'s habits</h1>
                <span>Start with 1-2 easily achievable habits <br/> and build from there!</span>
