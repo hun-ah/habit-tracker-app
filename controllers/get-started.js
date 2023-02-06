@@ -46,7 +46,7 @@ module.exports = {
                } else {
                   const newUser = new User({
                      name: name.charAt(0).toUpperCase() + name.slice(1),
-                     email,
+                     email: email.toLowerCase(),
                      password
                   })
 
