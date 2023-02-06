@@ -21,7 +21,6 @@ require('./config/passport')(passport)
 
 const PORT = process.env.PORT
 
-connectDB()
 
 // Middleware...
 app.use(nocache())
@@ -61,4 +60,7 @@ app.use('/login', loginRoutes)
 app.use('/getStarted', getStartedRoutes)
 app.use('*', errorRoutes)
 
-app.listen(PORT, () => console.log(`Server is running on ${PORT}`))
+connectDB()
+   .then(() => {
+      app.listen(PORT, () => console.log(`Server is running on ${PORT}`))
+   })
