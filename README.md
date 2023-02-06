@@ -4,6 +4,8 @@ This full stack CRUD application helps you to keep track of your daily habits!
 
 **You can check it out here:** [Habit Tracker](habit-tracker-hwm.cyclic.app)
 
+![Screen Shot 2023-02-06 at 3 10 20 PM](https://user-images.githubusercontent.com/103898493/217074727-ea44291a-5be4-482b-84bd-dcec32a874c9.png)
+
 ## How It's Made:
 **Built with: Node.js, Express, MongoDB, JavaScript, CSS and EJS**
 
