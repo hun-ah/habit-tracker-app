@@ -1,9 +1,9 @@
 const Habits = require('../models/Habits')
 
 module.exports = {
-   getPage: (req, res, next) => {
-      let todaysDate = new Date().toString().split(' ').slice(0, 4).join(' ')
-      let todaysDateMs = new Date(todaysDate + ', 00:00:00').getTime()
+   getPage: (req, res) => {
+      let todaysDate = new Date().toString()
+      // let todaysDateMs = new Date(todaysDate + ', 00:00:00').getTime()
 
       console.log(todaysDate)
       console.log(todaysDateMs)
