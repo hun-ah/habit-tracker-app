@@ -49,6 +49,7 @@ module.exports = {
          })
    },
    updateHabit: (req, res) => {
+      console.log(req.body)
       Habits.findOneAndUpdate({ _id: req.body.habitId, streak: req.body.streak, date: { $ne: req.body['current-date'] } }, {
          $set: {
             streak: req.body.streak + 1,
