@@ -3,7 +3,7 @@ const Habits = require('../models/Habits')
 module.exports = {
    getPage: (req, res) => {
       // Tue Feb 07 2023 12:28:35 GMT+0000 (Coordinated Universal Time)
-      let todaysDate = new Date().toString()
+      let todaysDate = new Date().toString().split(' ').splice(0, 4).join(' ')
       let todaysDateMs = new Date(todaysDate + ', 00:00:00').getTime()
 
       console.log(todaysDate)
