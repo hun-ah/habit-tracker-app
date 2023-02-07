@@ -6,13 +6,13 @@ module.exports = {
       // let todaysDateMs = new Date(todaysDate + ', 00:00:00').getTime()
 
       console.log(todaysDate)
-      console.log(todaysDateMs)
+      // console.log(todaysDateMs)
 
       Promise.all([
          Habits.updateMany({}, {
             $set: {
                todaysDate,
-               todaysDateMs
+               // todaysDateMs
             }
          }),
          Habits.updateMany({ lastClicked: { $ne: todaysDate } }, {
@@ -20,11 +20,11 @@ module.exports = {
                clicked: 'false'
             }
          }),
-         Habits.updateMany({ $expr: { $gte: [{ $subtract: ["$todaysDateMs", "$lastClickedMs"] }, 172800000] } }, {
-            $set: {
-               streak: 0
-            },
-         })
+         // Habits.updateMany({ $expr: { $gte: [{ $subtract: ["$todaysDateMs", "$lastClickedMs"] }, 172800000] } }, {
+         //    $set: {
+         //       streak: 0
+         //    },
+         // })
       ]).then(() => {
          Habits.find({ userId: req.user.id }).sort({ clicked: 1 })
             .then(results => {
