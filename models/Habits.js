@@ -14,7 +14,7 @@ const HabitSchema = new mongoose.Schema({
    lastClicked: {
       type: String,
    },
-   todaysDate: {
+   todaysDateUTC: {
       type: String,
    },
    clicked: {

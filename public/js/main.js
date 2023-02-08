@@ -12,6 +12,12 @@ const y = new Date(n)
 y.setDate(y.getDate() - 1)
 const yesterday = y.toDateString()
 
+let now_utc = Date.UTC(n.getUTCFullYear(), n.getUTCMonth(),
+   n.getUTCDate(), n.getUTCHours(),
+   n.getUTCMinutes(), n.getUTCSeconds());
+
+let dateUTC = n.toISOString()
+
 document.querySelector('.current-date').innerHTML += date
 
 // Event listeners for update, undo and delete buttons
@@ -54,7 +60,7 @@ async function updateHabit() {
       body: JSON.stringify({
          habit: habitName,
          streak: streak,
-         ['current-date']: date,
+         ['current-date']: dateUTC,
          clicked: 'true',
          lastClickedMs: new Date(date + ', 00:00:00').getTime(),
          habitId: habitId

@@ -1,22 +1,23 @@
 const Habits = require('../models/Habits')
+const moment = require('moment')
+moment().format()
 
 module.exports = {
    getPage: (req, res) => {
-      // Tue Feb 07 2023 12:28:35 GMT+0000 (Coordinated Universal Time)
       let todaysDate = new Date().toString().split(' ').splice(0, 4).join(' ')
       let todaysDateMs = new Date(todaysDate + ', 00:00:00').getTime()
+      let todaysDateUTC = moment.utc().startOf('day')
 
-      console.log(todaysDate)
-      console.log(todaysDateMs)
+      // console.log(todaysDateUTC)
 
       Promise.all([
          Habits.updateMany({}, {
             $set: {
-               todaysDate,
+               todaysDateUTC,
                todaysDateMs
             }
          }),
-         Habits.updateMany({ lastClicked: { $ne: todaysDate } }, {
+         Habits.updateMany({ lastClicked: { $ne: todaysDateUTC } }, {
             $set: {
                clicked: 'false'
             }
@@ -54,11 +55,12 @@ module.exports = {
    },
    updateHabit: (req, res) => {
       console.log(req.body)
+      console.log(moment.utc(req.body['current-date']))
       Habits.findOneAndUpdate({ _id: req.body.habitId, streak: req.body.streak, date: { $ne: req.body['current-date'] } }, {
          $set: {
             streak: req.body.streak + 1,
             clicked: req.body.clicked,
-            lastClicked: req.body['current-date'],
+            lastClicked: moment.utc(req.body['current-date']).startOf('day'),
             lastClickedMs: req.body.lastClickedMs
          }
       })
