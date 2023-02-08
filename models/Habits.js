@@ -12,10 +12,10 @@ const HabitSchema = new mongoose.Schema({
       type: Number,
    },
    lastClicked: {
-      type: String,
+      type: Date,
    },
    todaysDateUTC: {
-      type: String,
+      type: Date,
    },
    clicked: {
       type: String,

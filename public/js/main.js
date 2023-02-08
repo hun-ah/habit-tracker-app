@@ -11,7 +11,7 @@ const date = n.toString().split(' ').splice(0, 4).join(' ')
 const y = new Date(n)
 y.setDate(y.getDate() - 1)
 const yesterday = y.toDateString()
-
+// Todays date UTC
 let now_utc = Date.UTC(n.getUTCFullYear(), n.getUTCMonth(),
    n.getUTCDate(), n.getUTCHours(),
    n.getUTCMinutes(), n.getUTCSeconds());
@@ -84,7 +84,7 @@ async function undoHabit() {
       body: JSON.stringify({
          habit: habitName,
          streak: streak,
-         ['current-date']: yesterday,
+         ['current-date']: dateUTC,
          clicked: 'false',
          lastClickedMs: new Date(date + ', 00:00:00').getTime() - 86400000,
          habitId: habitId

@@ -8,8 +8,6 @@ module.exports = {
       let todaysDateMs = new Date(todaysDate + ', 00:00:00').getTime()
       let todaysDateUTC = moment.utc().startOf('day')
 
-      // console.log(todaysDateUTC)
-
       Promise.all([
          Habits.updateMany({}, {
             $set: {
@@ -55,7 +53,6 @@ module.exports = {
    },
    updateHabit: (req, res) => {
       console.log(req.body)
-      console.log(moment.utc(req.body['current-date']))
       Habits.findOneAndUpdate({ _id: req.body.habitId, streak: req.body.streak, date: { $ne: req.body['current-date'] } }, {
          $set: {
             streak: req.body.streak + 1,
@@ -69,11 +66,13 @@ module.exports = {
          .catch(error => console.error(error))
    },
    undoHabit: (req, res) => {
+      console.log(req.body)
+      console.log(moment.utc(req.body['current-date']).startOf('day'))
       Habits.findOneAndUpdate({ _id: req.body.habitId }, {
          $set: {
             streak: req.body.streak - 1,
             clicked: req.body.clicked,
-            lastClicked: req.body['current-date'],
+            lastClicked: moment.utc(req.body['current-date']).startOf('day').subtract(1, 'days'),
             lastClickedMs: req.body.lastClickedMs,
          }
       })
