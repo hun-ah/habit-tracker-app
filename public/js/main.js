@@ -3,22 +3,10 @@ const deleteBtns = document.querySelectorAll('.delete')
 const habitsLeft = Number(document.querySelector('.circle').innerText)
 const completedHabits = document.querySelectorAll('.completed')
 
-// DATES IN STRING FORMAT
-// Todays date
+// Display todays date in browser
 n = new Date()
-const date = n.toString().split(' ').splice(0, 4).join(' ')
-// Yesterdays date
-const y = new Date(n)
-y.setDate(y.getDate() - 1)
-const yesterday = y.toDateString()
-// Todays date UTC
-let now_utc = Date.UTC(n.getUTCFullYear(), n.getUTCMonth(),
-   n.getUTCDate(), n.getUTCHours(),
-   n.getUTCMinutes(), n.getUTCSeconds());
-
-let dateUTC = n.toISOString()
-
-document.querySelector('.current-date').innerHTML += date
+const todaysDate = n.toString().split(' ').splice(0, 4).join(' ')
+document.querySelector('.current-date').innerHTML += todaysDate
 
 // Event listeners for update, undo and delete buttons
 for (i of updateBtns) {
@@ -44,7 +32,29 @@ myForm.addEventListener('submit', function (pEvent) {
    }
 });
 
-// Functions
+let clientDate = moment().utc().startOf('day')._d.toISOString()
+
+console.log(clientDate)
+
+// let timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone
+// console.log(timeZone)
+
+// function convertTZ(date, tzString) {
+//    return new Date((typeof date === "string" ? new Date(date) : date).toLocaleString("en-US", { timeZone: tzString }));
+// }
+
+// console.log(convertTZ(clientDate, timeZone))
+
+// let putDate = function (form) {
+//    form.date.value = new Date().getTimezoneOffset() * 60000
+// }
+
+let putDate = function (form) {
+   let timezone = Intl.DateTimeFormat().resolvedOptions().timeZone
+   form.timezone.value = timezone
+}
+
+// Async Functions
 async function updateHabit() {
    const habitId = this.parentNode.parentNode.parentNode.dataset.id
 
@@ -60,10 +70,10 @@ async function updateHabit() {
       body: JSON.stringify({
          habit: habitName,
          streak: streak,
-         ['current-date']: dateUTC,
+         ['current-date']: clientDate,
          clicked: 'true',
-         lastClickedMs: new Date(date + ', 00:00:00').getTime(),
-         habitId: habitId
+         habitId: habitId,
+         lastClickedMs: new Date(clientDate).getTime(),
       })
    })
    const data = await res.json()
@@ -84,10 +94,10 @@ async function undoHabit() {
       body: JSON.stringify({
          habit: habitName,
          streak: streak,
-         ['current-date']: dateUTC,
+         ['current-date']: clientDate,
          clicked: 'false',
-         lastClickedMs: new Date(date + ', 00:00:00').getTime() - 86400000,
-         habitId: habitId
+         habitId: habitId,
+         lastClickedMs: new Date(clientDate).getTime() - 86400000
       })
    })
    const data = await res.json()

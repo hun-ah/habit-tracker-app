@@ -1,24 +1,25 @@
+const { Double } = require('mongodb')
 const mongoose = require('mongoose')
 
 const HabitSchema = new mongoose.Schema({
+   userId: {
+      type: String,
+   },
    habitName: {
       type: String,
       required: true
    },
-   userId: {
-      type: String,
-   },
    streak: {
       type: Number,
    },
-   lastClicked: {
+   lastCompleted: {
       type: Date,
    },
-   todaysDateUTC: {
-      type: Date,
+   timezone: {
+      type: String
    },
    clicked: {
-      type: String,
+      type: Boolean,
    },
    lastClickedMs: {
       type: Number
