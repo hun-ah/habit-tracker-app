@@ -32,22 +32,10 @@ myForm.addEventListener('submit', function (pEvent) {
    }
 });
 
-let clientDate = moment().utc().startOf('day')._d.toISOString()
-
-console.log(clientDate)
-
-// let timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone
-// console.log(timeZone)
-
-// function convertTZ(date, tzString) {
-//    return new Date((typeof date === "string" ? new Date(date) : date).toLocaleString("en-US", { timeZone: tzString }));
-// }
-
-// console.log(convertTZ(clientDate, timeZone))
-
-// let putDate = function (form) {
-//    form.date.value = new Date().getTimezoneOffset() * 60000
-// }
+let clientDate = moment().startOf('day')._d
+let TIMEZONE = Intl.DateTimeFormat().resolvedOptions().timeZone
+let formattedDate = moment.tz(clientDate, TIMEZONE).startOf('day').format()
+let dateInMs = new Date(formattedDate).getTime()
 
 let putDate = function (form) {
    let timezone = Intl.DateTimeFormat().resolvedOptions().timeZone
@@ -70,10 +58,10 @@ async function updateHabit() {
       body: JSON.stringify({
          habit: habitName,
          streak: streak,
-         ['current-date']: clientDate,
+         ['current-date']: formattedDate,
          clicked: 'true',
          habitId: habitId,
-         lastClickedMs: new Date(clientDate).getTime(),
+         lastClickedMs: dateInMs
       })
    })
    const data = await res.json()
