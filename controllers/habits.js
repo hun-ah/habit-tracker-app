@@ -9,6 +9,12 @@ module.exports = {
       let todaysDateFormatted = moment.tz(todaysDate, 'America/Toronto').startOf('day').add(1, 'days').format()
       let todaysDateMs = new Date(todaysDateFormatted).getTime()
 
+      console.log(
+         todaysDate,
+         todaysDateFormatted,
+         todaysDateMs
+      )
+
       Promise.all([
          Habits.updateMany({ lastCompleted: { $ne: todaysDateFormatted } },
             {
