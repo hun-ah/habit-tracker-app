@@ -24,7 +24,7 @@ for (i of habitItems) {
    } else {
       i.classList.toggle('false')
    }
-   console.log(`This element has a habit id of: ${i.dataset.id} and was last completed ${serverDate}`)
+   console.log(`This element has a habit id of: ${i.dataset.id} and was last completed ${serverDate ? serverDate : '(habit hasn\'t been clicked yet'}`)
 }
 
 // When to show completed message
