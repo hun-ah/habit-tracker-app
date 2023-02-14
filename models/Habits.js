@@ -17,9 +17,6 @@ const HabitSchema = new mongoose.Schema({
    },
    lastClickedMs: {
       type: Number
-   },
-   todaysDateMs: {
-      type: Number
    }
 })
 
