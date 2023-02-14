@@ -36,6 +36,10 @@ This application was initially very basic but as I completed big pieces of funct
 and enjoyable to use, such as: displaying how many habits are left to the user, creating a daily streak for each habit and a congratulations message
 when all habits are compelete for the day.
 
+One thing I had a **lot** of trouble with was working with dates. I initially had much of my logic for working with dates on the server side and ended up
+moving this to the client side to A, make less requests to the server and B, more easily convert the dates (converting UTC time from the server to the
+clients local time).
+
 If I had more time, I would add the ability to edit habits, archive a habit (in case the user wanted to bring it back again at some point) and some kind
 of calendar feature, where the user could click on a specific date to see what habits were completed. I also realized that I didn't write my HTML
 semantically for this project because I was so focused on writing the backend code. I would like to come back and remedy this at some point.
@@ -44,6 +48,8 @@ semantically for this project because I was so focused on writing the backend co
 
 This project was a huge learning experience for me. It was my first time writing backend code and using a database. Besides getting more familiar with 
 using node, express, MongoDB and EJS, I also learned how to use different packages (bcrypt, passport, dotenv, express-sessions and mongoose, among
-others). I've learned a lot about using MVC architecture, mongoose/MongoDB methods and how to use them and working with asynchronous code.
+others). I've learned a lot about using MVC architecture, mongoose/MongoDB methods and how to use them and working with asynchronous code. 
+Due to the issues I had with dates, I've gained a lot of knowledge about how dates work on the backend, UTC time, JS date object, time zone offsets and
+using a library such as Moment.js (though I know it is deprecated and there are some better options out there currently).
 The other big takeaway for me is the importance of structuring your code correctly the first time and not taking any shortcuts (especially when it comes
 to CSS) to save yourself more work down the line!
