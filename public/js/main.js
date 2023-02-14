@@ -17,7 +17,7 @@ let habitsLeft = habitItems.length
 
 // If habit is clicked: fade habit, else set class to false (take away fade)
 for (i of habitItems) {
-   let serverDate = typeof i.dataset.lastcompleted == 'string' ? new Date(i.dataset.lastcompleted) : '(habit hasn\'t been clicked yet)'
+   let serverDate = new Date(i.dataset.lastcompleted)
    if (serverDate == currentDateLocal) {
       i.classList.toggle('fade-li')
       habitsLeft -= 1

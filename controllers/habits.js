@@ -22,7 +22,7 @@ module.exports = {
    createHabit: (req, res) => {
       const habitName = req.body.habitName.split(' ').map(word => word[0].toUpperCase() + word.substring(1)).join(' ')
 
-      Habits.create({ habitName: habitName, streak: 0, lastCompleted: undefined, userId: req.user.id })
+      Habits.create({ habitName: habitName, streak: 0, lastCompleted: '', userId: req.user.id })
          .then(result => {
             console.log(result)
             res.redirect('/habits')
