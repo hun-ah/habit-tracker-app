@@ -453,13 +453,18 @@
  }
 
  .completed-container {
-    display: flex;
+    /* display: flex; */
     justify-content: center;
     align-items: center;
     background: #31c48d;
     padding: 12px;
     border-radius: 4px;
     margin-bottom: 10px;
+    display: none;
+ }
+
+ .show-completed {
+    display: flex;
  }
 
  .completed-msg {

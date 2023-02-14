@@ -1,24 +1,52 @@
-const updateBtns = document.querySelectorAll('.incomplete')
+const updateBtns = document.querySelectorAll('.update')
 const deleteBtns = document.querySelectorAll('.delete')
-const habitsLeft = Number(document.querySelector('.circle').innerText)
-const completedHabits = document.querySelectorAll('.completed')
+
+// dates and times
+let currentDateLocal = moment().startOf('day')._d.toString()
+let utcDate = moment().utc().startOf('day')._d.toString()
+let utcDateMs = new Date(utcDate).getTime()
+console.log(`Today is: ${currentDateLocal}`)
 
 // Display todays date in browser
-n = new Date()
-const todaysDate = n.toString().split(' ').splice(0, 4).join(' ')
-document.querySelector('.current-date').innerHTML += todaysDate
+document.querySelector('.current-date').innerHTML += currentDateLocal.split(' ').splice(0, 4).join(' ')
 
-// Event listeners for update, undo and delete buttons
+// select the li elements
+const habitItems = document.querySelectorAll('#habits')
+// declare habitsLeft variable
+let habitsLeft = habitItems.length
+
+// If habit is clicked: fade habit, else set class to false (take away fade)
+for (i of habitItems) {
+   if (i.dataset.lastcompleted == currentDateLocal) {
+      i.classList.toggle('fade-li')
+      habitsLeft -= 1
+   } else {
+      i.classList.toggle('false')
+   }
+   console.log(`This element has a habit id of: ${i.dataset.id} and was last completed ${i.dataset.lastcompleted}`)
+}
+
+// When to show completed message
+if (habitsLeft === 0 && habitItems.length > 0) {
+   document.querySelector('.completed-container').classList.toggle('show-completed')
+}
+
+// Show how many habits left to user
+const showHabitsLeft = document.querySelector('.circle').innerText = habitsLeft
+
+// Event listeners for update and delete buttons
 for (i of updateBtns) {
-   i.addEventListener('click', updateHabit)
+   if (i.parentNode.parentNode.parentNode.className == 'fade-li') {
+      i.addEventListener('click', undoHabit)
+      i.classList.toggle('undo-btn')
+      i.innerHTML = 'Undo'
+   } else {
+      i.addEventListener('click', updateHabit)
+   }
 }
 
 for (i of deleteBtns) {
    i.addEventListener('click', deleteHabit)
-}
-
-for (i of completedHabits) {
-   i.addEventListener('click', undoHabit)
 }
 
 // Prevent empty form submission
@@ -32,16 +60,6 @@ myForm.addEventListener('submit', function (pEvent) {
    }
 });
 
-let clientDate = moment().startOf('day')._d
-let TIMEZONE = Intl.DateTimeFormat().resolvedOptions().timeZone
-let formattedDate = moment.tz(clientDate, TIMEZONE).startOf('day').format()
-let dateInMs = new Date(formattedDate).getTime()
-
-let putDate = function (form) {
-   let timezone = Intl.DateTimeFormat().resolvedOptions().timeZone
-   form.timezone.value = timezone
-}
-
 // Async Functions
 async function updateHabit() {
    const habitId = this.parentNode.parentNode.parentNode.dataset.id
@@ -50,18 +68,15 @@ async function updateHabit() {
 
    const streak = Number(this.parentNode.parentNode.childNodes[1].childNodes[3].innerText.split(' ').slice(0, 2).pop())
 
-   console.log(habitId)
-
    const res = await fetch('/habits/updateHabit', {
       method: 'put',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
          habit: habitName,
          streak: streak,
-         ['current-date']: formattedDate,
-         clicked: 'true',
+         ['current-date']: currentDateLocal,
          habitId: habitId,
-         lastClickedMs: dateInMs
+         lastClickedMs: utcDateMs
       })
    })
    const data = await res.json()
@@ -82,10 +97,9 @@ async function undoHabit() {
       body: JSON.stringify({
          habit: habitName,
          streak: streak,
-         ['current-date']: clientDate,
-         clicked: 'false',
+         ['current-date']: currentDateLocal,
          habitId: habitId,
-         lastClickedMs: new Date(clientDate).getTime() - 86400000
+         lastClickedMs: utcDateMs - 86400000
       })
    })
    const data = await res.json()

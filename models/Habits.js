@@ -13,15 +13,12 @@ const HabitSchema = new mongoose.Schema({
       type: Number,
    },
    lastCompleted: {
-      type: String,
-   },
-   timezone: {
-      type: String
-   },
-   clicked: {
-      type: Boolean,
+      type: Date,
    },
    lastClickedMs: {
+      type: Number
+   },
+   todaysDateMs: {
       type: Number
    }
 })
