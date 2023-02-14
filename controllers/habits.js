@@ -13,8 +13,9 @@ module.exports = {
          },
       })
          .then(() => {
-            Habits.find({ userId: req.user.id })
+            Habits.find({ userId: req.user.id }).sort({ lastCompleted: 1 })
                .then(results => {
+
                   res.render('habits.ejs', { habits: results, dayVar: 'days', name: req.user.name })
                })
          })
