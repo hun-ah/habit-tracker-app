@@ -17,13 +17,14 @@ let habitsLeft = habitItems.length
 
 // If habit is clicked: fade habit, else set class to false (take away fade)
 for (i of habitItems) {
-   if (new Date(i.dataset.lastcompleted) == currentDateLocal) {
+   let serverDate = new Date(i.dataset.lastcompleted)
+   if (serverDate == currentDateLocal) {
       i.classList.toggle('fade-li')
       habitsLeft -= 1
    } else {
       i.classList.toggle('false')
    }
-   console.log(`This element has a habit id of: ${i.dataset.id} and was last completed ${i.dataset.lastcompleted}`)
+   console.log(`This element has a habit id of: ${i.dataset.id} and was last completed ${serverDate}`)
 }
 
 // When to show completed message
