@@ -2,7 +2,8 @@ const updateBtns = document.querySelectorAll('.update')
 const deleteBtns = document.querySelectorAll('.delete')
 
 // dates and times
-let currentDateLocal = moment().startOf('day')._d.toString()
+// let currentDateLocal = moment().startOf('day')._d.toISOString()
+let currentDateLocal = moment().startOf('day').format('YYYY-MM-DD HH:mm:ss')
 let utcDate = moment().utc().startOf('day')._d.toString()
 let utcDateMs = new Date(utcDate).getTime()
 console.log(`Today is: ${currentDateLocal}`)
@@ -17,13 +18,13 @@ let habitsLeft = habitItems.length
 
 // If habit is clicked: fade habit, else set class to false (take away fade)
 for (i of habitItems) {
-   if (i.dataset.lastcompleted == currentDateLocal) {
+   if (moment(i.dataset.lastcompleted).local().startOf('day').format('YYYY-MM-DD HH:mm:ss') == currentDateLocal) {
       i.classList.toggle('fade-li')
       habitsLeft -= 1
    } else {
       i.classList.toggle('false')
    }
-   console.log(`This element has a habit id of: ${i.dataset.id} and was last completed ${i.dataset.lastcompleted}`)
+   console.log(`This element has a habit id of: ${i.dataset.id} and was last completed ${moment(i.dataset.lastcompleted).local().startOf('day').format('YYYY-MM-DD HH:mm:ss')}`)
 }
 
 // When to show completed message
