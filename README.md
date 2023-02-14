@@ -48,8 +48,11 @@ semantically for this project because I was so focused on writing the backend co
 
 This project was a huge learning experience for me. It was my first time writing backend code and using a database. Besides getting more familiar with 
 using node, express, MongoDB and EJS, I also learned how to use different packages (bcrypt, passport, dotenv, express-sessions and mongoose, among
-others). I've learned a lot about using MVC architecture, mongoose/MongoDB methods and how to use them and working with asynchronous code. 
+others). 
+
+I've learned a lot about using MVC architecture, mongoose/MongoDB methods and how to use them and working with asynchronous code. 
 Due to the issues I had with dates, I've gained a lot of knowledge about how dates work on the backend, UTC time, JS date object, time zone offsets and
 using a library such as Moment.js (though I know it is deprecated and there are some better options out there currently).
+
 The other big takeaway for me is the importance of structuring your code correctly the first time and not taking any shortcuts (especially when it comes
 to CSS) to save yourself more work down the line!
