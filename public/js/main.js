@@ -2,8 +2,7 @@ const updateBtns = document.querySelectorAll('.update')
 const deleteBtns = document.querySelectorAll('.delete')
 
 // dates and times
-// let currentDateLocal = moment().startOf('day')._d.toISOString()
-let currentDateLocal = moment().startOf('day').format('YYYY-MM-DD HH:mm:ss')
+let currentDateLocal = moment().startOf('day')._d.toString()
 let utcDate = moment().utc().startOf('day')._d.toString()
 let utcDateMs = new Date(utcDate).getTime()
 console.log(`Today is: ${currentDateLocal}`)
@@ -18,13 +17,13 @@ let habitsLeft = habitItems.length
 
 // If habit is clicked: fade habit, else set class to false (take away fade)
 for (i of habitItems) {
-   if (moment(i.dataset.lastcompleted).local().startOf('day').format('YYYY-MM-DD HH:mm:ss') == currentDateLocal) {
+   if (new Date(i.dataset.lastcompleted) == currentDateLocal) {
       i.classList.toggle('fade-li')
       habitsLeft -= 1
    } else {
       i.classList.toggle('false')
    }
-   console.log(`This element has a habit id of: ${i.dataset.id} and was last completed ${moment(i.dataset.lastcompleted).local().startOf('day').format('YYYY-MM-DD HH:mm:ss')}`)
+   console.log(`This element has a habit id of: ${i.dataset.id} and was last completed ${i.dataset.lastcompleted}`)
 }
 
 // When to show completed message
@@ -35,7 +34,7 @@ if (habitsLeft === 0 && habitItems.length > 0) {
 // Show how many habits left to user
 const showHabitsLeft = document.querySelector('.circle').innerText = habitsLeft
 
-// Event listeners for update and delete buttons
+// Event listeners for update, undo and delete buttons
 for (i of updateBtns) {
    if (i.parentNode.parentNode.parentNode.className == 'fade-li') {
       i.addEventListener('click', undoHabit)
