@@ -13,7 +13,7 @@ module.exports = {
          },
       })
          .then(() => {
-            Habits.find({ userId: req.user.id }).sort({ lastCompleted: 1 })
+            Habits.find({ userId: req.user.id }).sort({ lastCompleted: 1 }).lean()
                .then(results => {
 
                   res.render('habits.ejs', { habits: results, dayVar: 'days', name: req.user.name })
@@ -40,7 +40,7 @@ module.exports = {
             lastCompleted: req.body['current-date'],
             lastClickedMs: req.body.lastClickedMs
          }
-      })
+      }).lean()
          .then(console.log('Added Day'),
             res.json(' Habit Completed'))
          .catch(error => console.error(error))
@@ -54,7 +54,7 @@ module.exports = {
             lastCompleted: moment(req.body['current-date']).subtract(1, 'days').format(),
             lastClickedMs: req.body.lastClickedMs,
          }
-      })
+      }).lean()
          .then(console.log('Undo Habit'),
             res.json('Undo Completed'))
          .catch(error => console.error(error))
